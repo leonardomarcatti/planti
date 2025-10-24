@@ -269,6 +269,47 @@ footer a {
    min-width: 250px;
 }
 
+.card_alert {
+   margin: 20px;
+   box-shadow: 0 0 10px black;
+   background-color: #eee;
+   transition: all 0.25s ease-in-out;
+}
+
+.card_alert:hover {
+   transform: scale(1.05);
+}
+
+.card_alert:not(hover) {
+   transform: scale(1);
+}
+
+.card_alert:not() {
+   transform: scale(1);
+   transition: all 0.25s ease-in-out;
+}
+
+.card_main {
+   padding: 20px;
+}
+
+.alert_link {
+   background-color: rgb(230, 50, 50);
+}
+
+.alert_link:hover {
+   background-color: rgb(128, 26, 26);
+}
+
+.alert_link:hover i {
+   color: white;
+}
+
+.alert_link a {
+   height: 100%;
+   width: 100%;
+}
+
 #del_planta,
 #del_planta>section {
    display: flex;
