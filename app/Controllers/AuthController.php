@@ -72,6 +72,7 @@ class AuthController extends BaseController
       ];
 
       $validData = $this->validateData($post, $rules);
+
       if ($this->request->getMethod() === 'POST' && $validData) {
          $this->model = new UsersModel();
          $foundUser = $this->model->getUser($this->encriptData($post['email']), $this->encriptData($post['password']));
@@ -89,5 +90,65 @@ class AuthController extends BaseController
    {
       \session()->destroy();
       return \redirect()->route('login');
+   }
+
+   public function validateEmail()
+   {
+      $post = $this->request->getPost(['email']);
+
+      $rules = [
+         'email'    => [
+            'rules' => 'required|valid_email',
+            'errors' => ['required' => 'O campo é obrigatório', 'valid_email' => 'Insira um email válido'],
+         ]
+      ];
+
+      $validData = $this->validateData($post, $rules);
+
+      if ($this->request->getMethod() === 'POST' && $validData) {
+         $this->model = new UsersModel();
+         $result = $this->model->checkEmail($this->encriptData($post['email']));
+
+         if ($result['response']) {
+            return \redirect()->back()->withInput()->with('bad_email', 'O email Não existe');
+         } else {
+            return \redirect()->route('updatePassword')->with('sessionID', \session()->setTempdata('userID', $result['id'], 300));
+         }
+      }
+
+      return \redirect()->back()->withInput()->with('errors', \session()->setTempdata('err', $this->validator->getErrors(), 10));
+   }
+
+   public function updatePassword()
+   {
+
+      \helper('form');
+
+      $post = $this->request->getPost(['password', 'confirmPassword', 'userID']);
+      $rules = [
+         'password' => [
+            'rules' => 'required|min_length[6]',
+            'errors' => ['required' => 'O campo é obrigatório', 'min_length' => 'O campo deve ter pelo menos 6 caracteres']
+         ],
+         'confirmPassword' => [
+            'rules' => 'required|matches[password]',
+            'errors' => ['required' => 'O campo é obrigatório', 'matches' => 'As senhas não combinam']
+         ]
+      ];
+
+      $validData = $this->validateData($post, $rules);
+      if ($this->request->getMethod() == 'POST' && $validData) {
+         $model = $this->model = new UsersModel();
+
+         $result = $model->updatePassword($this->encriptData($post['password']), $post['userID']);
+
+         if ($result) {
+            return \redirect()->route('login')->withInput()->with('success', 'Senha atualizada com sucesso');
+         }
+
+         return \redirect()->route('logup')->withInput()->with('error', 'Erro ao atualizar a senha. Tente novamente mais tarde.');
+      }
+
+      return redirect()->to(current_url())->with('errors', \session()->setTempdata('err', $this->validator->getErrors(), 10));
    }
 }

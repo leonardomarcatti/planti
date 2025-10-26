@@ -45,7 +45,7 @@
                   <hr class="dropdown-divider">
                </li>
                <li>
-                  <a href="" class="dropdown-item editUser">
+                  <a href="<?= base_url('editUser') ?>" class="dropdown-item editUser">
                      <i class="fa-solid fa-user-pen"></i> Editar Usuário/Senha
                   </a>
                </li>

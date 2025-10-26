@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\PlantasModel;
 use App\Models\AcoesModel;
 use App\Models\TiposModel;
+use App\Models\UsersModel;
 
 class PagesController extends BaseController
 {
@@ -233,5 +234,29 @@ class PagesController extends BaseController
       $this->model = model(AcoesModel::class);
       $this->data['alerts'] = $this->model->getAlerts(session()->get('id'));
       return view('alerts', $this->data);
+   }
+
+   public function editUser()
+   {
+      $this->data['tab'] = 'Planti - Editar Usiario';
+      $this->data['title'] = 'Editar Usuário';
+      $this->model = model(UsersModel::class);
+      echo session()->get('id');
+      // $this->data['user'] = $this->model->getUser(session()->get('id'));
+      // return view('alerts', $this->data);
+   }
+
+   public function forgotPassword()
+   {
+      $this->data['tab'] = 'Planti - Verificar Email';
+      $this->data['title'] = 'Verificar Email';
+      return view('forgotPassword', $this->data);
+   }
+
+   public function updatePassword()
+   {
+      $this->data['tab'] = 'Planti - Update Password';
+      $this->data['title'] = 'Update Password';
+      return view('updatePassword', $this->data);
    }
 }

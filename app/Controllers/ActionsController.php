@@ -244,7 +244,7 @@ class ActionsController extends BaseController
    {
       $post = $this->request->getPost(['title', 'action', 'start_date', 'deadline']);
 
-   
+
 
       $this->model = \model(PlantasModel::class);
       if (!empty($post)) {

@@ -23,6 +23,7 @@
             <label for="password" class="form-label">Senha:</label>
             <input type="password" name="password" id="password" class="form-control">
             <small class="small"><?= session()->getTempdata('err')['password'] ?? '' ?></small>
+            <small><a href="forgotPassword">Esqueci minha senha</a></small>
          </div>
          <div class="mb-3 clear-both">
             <button type="reset" class="btn btn-danger float-end" id="btn_clear">Limpar</button>

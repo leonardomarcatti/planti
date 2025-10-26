@@ -273,20 +273,17 @@ footer a {
    margin: 20px;
    box-shadow: 0 0 10px black;
    background-color: #eee;
+   border-radius: 15px;
    transition: all 0.25s ease-in-out;
-}
 
-.card_alert:hover {
-   transform: scale(1.05);
-}
+   &:hover .alert_link {
+      background-color: rgba(228, 14, 14, 1);
+   }
 
-.card_alert:not(hover) {
-   transform: scale(1);
-}
-
-.card_alert:not() {
-   transform: scale(1);
-   transition: all 0.25s ease-in-out;
+   &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px black;
+   }
 }
 
 .card_main {
@@ -294,14 +291,11 @@ footer a {
 }
 
 .alert_link {
-   background-color: rgb(230, 50, 50);
+   background-color: darkred;
+   border-radius: 0 15px 15px 0;
 }
 
-.alert_link:hover {
-   background-color: rgb(128, 26, 26);
-}
-
-.alert_link:hover i {
+.alert_link i {
    color: white;
 }
 

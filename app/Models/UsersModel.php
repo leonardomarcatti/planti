@@ -18,14 +18,14 @@ class UsersModel extends Model
       return ($user) ? $user : false;
    }
 
-   private function checkEmail(string $email): bool
+   public function checkEmail(string $email): array
    {
       $result = $this->select(['id'])->where('email', $email)->get()->getRowArray();
       if (isset($result['id'])) {
-         return false;
+         return ['response' => false, 'id' => $result['id']];
       }
 
-      return true;
+      return ['response' => true, 'id' => null];
    }
 
    public function addUser(string $name, string $email, string $password): bool
@@ -37,5 +37,10 @@ class UsersModel extends Model
       }
 
       return false;
+   }
+
+   public function updatePassword(string $password, string $id): bool
+   {
+      return $this->set('password', $password)->where('id', $id)->update();
    }
 }
