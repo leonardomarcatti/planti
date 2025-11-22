@@ -8,10 +8,33 @@ use App\Models\UsersModel;
 class AuthController extends BaseController
 {
    private object $model;
+   private ?array $data;
 
    private function encriptData(string $data): string
    {
       return \base64_encode($data);
+   }
+
+   private function decriptData(array $data) : array
+   {  
+      $decriptedData = [];
+
+      foreach ($data as $key => $item) {
+         $decriptedData[$key] = \base64_decode($item);
+      }
+
+      return $decriptedData;
+   }
+
+   public function editUser()
+   {
+      $this->data['tab'] = 'Planti - Editar Usiario';
+      $this->data['title'] = 'Editar Usuário';
+      $this->model = model(UsersModel::class);
+      $this->data['user'] = $this->model->retrieveUserData(session()->get('id'));
+      $decriptedData = $this->decriptData($this->data['user']);
+      $this->data['user'] = $decriptedData;
+      return view('editUser',  $this->data);
    }
 
    public function logupAction()
@@ -92,7 +115,7 @@ class AuthController extends BaseController
       return \redirect()->route('login');
    }
 
-   public function validateEmail()
+   public function forgotPassword()
    {
       $post = $this->request->getPost(['email']);
 

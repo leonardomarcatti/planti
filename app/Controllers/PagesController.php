@@ -236,16 +236,6 @@ class PagesController extends BaseController
       return view('alerts', $this->data);
    }
 
-   public function editUser()
-   {
-      $this->data['tab'] = 'Planti - Editar Usiario';
-      $this->data['title'] = 'Editar Usuário';
-      $this->model = model(UsersModel::class);
-      echo session()->get('id');
-      // $this->data['user'] = $this->model->getUser(session()->get('id'));
-      // return view('alerts', $this->data);
-   }
-
    public function forgotPassword()
    {
       $this->data['tab'] = 'Planti - Verificar Email';

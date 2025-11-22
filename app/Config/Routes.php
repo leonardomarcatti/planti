@@ -16,7 +16,7 @@ $routes->post('cuidadosTipo', 'ActionsController::cuidadosTipo');
 $routes->post('loginAction', 'AuthController::loginAction', ['as' => 'loginAction']);
 $routes->post('logupAction', 'AuthController::logupAction', ['as' => 'logupAction']);
 $routes->post('editAction', 'AuthController::editAction', ['as' => 'editAction']);
-$routes->post('validateEmail', 'AuthController::validateEmail', ['as' => 'validateEmail']);
+$routes->post('forgotPassword', 'AuthController::forgotPassword', ['as' => 'forgotPassword']);
 $routes->post('updatePassword', 'AuthController::updatePassword', ['as' => 'updatePassword']);
 
 
@@ -38,6 +38,6 @@ $routes->get('login', 'PagesController::login', ['as' => 'login']);
 $routes->get('logup', 'PagesController::logup', ['as' => 'logup']);
 $routes->get('logout', 'AuthController::logout', ['as' => 'logout']);
 $routes->get('alerts', 'PagesController::alerts', ['as' => 'alerts']);
-$routes->get('editUser', 'PagesController::editUser', ['as' => 'editUser']);
+$routes->get('editUser', 'AuthController::editUser', ['as' => 'editUser']);
 $routes->get('forgotPassword', 'PagesController::forgotPassword', ['as' => 'forgotPassword']);
 $routes->get('updatePassword', 'PagesController::updatePassword', ['as' => 'updatePassword']);

@@ -12,7 +12,7 @@
       <div id="flashGood">
          <p><?= session()->getFlashdata('password_updated') ?? '' ?></p>
       </div>
-      <form action="validateEmail" method="post" class="d-flex flex-column justify-content-start">
+      <form action="forgotPassword" method="post" class="d-flex flex-column justify-content-start">
          <?= csrf_field() ?>
          <div class="mb-3">
             <label for="email" class="form-label">Email:</label>

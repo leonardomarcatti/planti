@@ -18,6 +18,11 @@ class UsersModel extends Model
       return ($user) ? $user : false;
    }
 
+   public function retrieveUserData(string $id) : array
+   {
+      return $this->select()->where('id', $id)->get()->getRowArray();
+   }
+
    public function checkEmail(string $email): array
    {
       $result = $this->select(['id'])->where('email', $email)->get()->getRowArray();
