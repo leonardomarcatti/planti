@@ -10,8 +10,12 @@
          <div id="flashbad">
             <p><?= session()->getFlashdata('bad_email') ?? '' ?></p>
          </div>
-         <form action="logupAction" method="post" id="form_login">
+         <div id="flashGood">
+            <p><?= session()->getFlashdata('success') ?? '' ?></p>
+         </div>
+         <form action="<?= route_to('updateUserAction') ?>" method="post" id="form_login">
             <?= csrf_field() ?>
+            <input type="hidden" name="_method" value="PUT">
             <div class="mb-3">
                <label for="name" class="form-label">Nome:</label>
                <input type="text" name="name" id="name" class="form-control" value="<?= $user['name'] ?>">
@@ -24,18 +28,18 @@
             </div>
             <div class="mb-3">
                <label for="password" class="form-label">Senha:</label>
-               <input type="password" name="password" id="password" class="form-control">
+               <input type="password" name="password" id="password" class="form-control" value="" autocomplete="off">
                <small class="small"><?= session()->getTempdata('err')['password'] ?? '' ?></small>
             </div>
             <div class="mb-3">
                <label for="password2" class="form-label">Repita Senha:</label>
-               <input type="password" name="password2" id="password2" class="form-control">
+               <input type="password" name="password2" id="password2" class="form-control" value="">
                <small class="small"><?= session()->getTempdata('err')['password2'] ?? '' ?></small>
             </div>
             <div class="mb-3 clear-both">
                <button type="reset" class="btn btn-danger float-end" id="btn_consulta">Limpar</button>
-               <button type="submit" class="btn btn-success float-end" id="btn_consulta">Cadastrar</button>
-               <a href="login" class="btn btn-warning">Voltar</a>
+               <button type="submit" class="btn btn-success float-end" id="btn_consulta">Atualizar</button>
+               <a href="/" class="btn btn-warning">Voltar</a>
             </div>
          </form>
       </div>

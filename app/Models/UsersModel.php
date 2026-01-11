@@ -48,4 +48,13 @@ class UsersModel extends Model
    {
       return $this->set('password', $password)->where('id', $id)->update();
    }
+
+
+   public function updateUser(string $name, string $password, string $email, string $id)
+   {
+      return $this->where('id', $id)
+      ->set(['updated_at' => Time::now(), 'name' => $name, 'password' => $password, 'email' => $email ])
+      ->update();
+   }
+
 }

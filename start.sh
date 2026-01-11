@@ -1,37 +1,33 @@
 #!/bin/bash
 
-CONFIG_FILE="/etc/mysql/mariadb.conf.d/50-server.cnf"
+set -e
 
-echo "🔧 Configurando MariaDB para aceitar conexões remotas..."
+echo "⏳ Aguardando banco de dados (MySQL saudável pelo Docker)..."
 
-if grep -q "^bind-address" "$CONFIG_FILE"; then
-    sed -i 's/^bind-address.*/bind-address = 0.0.0.0/' "$CONFIG_FILE"
-else
-    echo "bind-address = 0.0.0.0" >> "$CONFIG_FILE"
-fi
-
-echo "🚀 Iniciando MariaDB..."
-service mariadb start
-
-# Aguarda o MariaDB estar disponível
-until mysqladmin ping --silent; do
-  echo "Esperando MariaDB iniciar..."
-  sleep 5
+# Garantia extra (opcional, mas seguro)
+until php -r "
+try {
+    new PDO(
+        'mysql:host=planti_db;dbname=planti;port=3306',
+        'admin',
+        '9x*UwARA5@'
+    );
+    echo 'DB OK';
+} catch (Exception \$e) {
+    exit(1);
+}
+"; do
+  echo "⏳ Banco ainda não disponível..."
+  sleep 3
 done
 
-echo "✔ MariaDB iniciado!"
+echo "✔ Banco disponível!"
 
-# Cria o banco e o usuário (se ainda não existirem)
-mysql -uroot -e "CREATE DATABASE IF NOT EXISTS planti;"
-mysql -uroot -e "CREATE USER IF NOT EXISTS 'admin'@'%' IDENTIFIED BY '9x*UwARA5@';"
-mysql -uroot -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%';"
-mysql -uroot -e "FLUSH PRIVILEGES;"
+echo "📦 Instalando dependências..."
+composer install --no-interaction --prefer-dist --optimize-autoloader
 
-# Instala dependências se ainda não existirem
-composer install
+echo "🧱 Executando migrations..."
+php spark migrate --force
 
-# Roda as migrations (opcional)
-php spark migrate
-
-# Inicia o servidor embutido do CodeIgniter
-php spark serve --host 0.0.0.0 --port 8080
+echo "🚀 Iniciando CodeIgniter 4..."
+php spark serve --host 0.0.0.0 --port 3000

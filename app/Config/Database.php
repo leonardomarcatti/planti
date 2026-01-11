@@ -26,7 +26,7 @@ class Database extends Config
     */
    public array $default = [
       'DSN'          => '',
-      'hostname'     => '127.0.0.1',
+      'hostname'     => 'planti_db',
       'username'     => 'admin',
       'password'     => '9x*UwARA5@',
       'database'     => 'planti',

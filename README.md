@@ -18,16 +18,16 @@
 <p>cd planti</p>
 
 <h3>2. Build e execução do container</h3>
-<p>docker build -t planti .</p>
-<p>docker container run -d --name planti -h planti -p 8080:8080 -p 3305:3306 -v pasta_projeto:/app</p>
+<p>docker compose up -d --build</p>
+<p>Nas próximas vezes que iniciar o container deve-se remover a flag --build do comando anterior "docker compose up -d"</p>
 
 <h3>3. Copie o arquivo de ambiente</h3>
 <p>Renomeie o arquivo .env_example para .env com os dados de conexão com seu MySQL.</p>
 <p>Remova o comentário da linha de ambiente e o renomeie como production</p>
 <b>CI_ENVIRONMENT = production</b>
 
-<p>Em app/Config/App.php altere a linha para public string $baseURL = 'http://ip_server:8080'</p>
-<p><b>O servidor estará acessível em: http://ip_server:8080</b></p>
+<p>Em app/Config/App.php altere a linha para public string $baseURL = ''</p>
+<p><b>O servidor estará acessível em: http://ip_server:3000</b></p>
 
 <p>Em app/Config/Database altere as configurações do banco de dados para:</p>
 <p>'hostname'     => '127.0.0.1',</p>

@@ -1,29 +1,38 @@
-# Usa uma imagem PHP com Apache
-FROM leonardomarcatti/lamp:latest
+FROM php:8.2-cli
 
+# Dependências do sistema (SEM banco)
+RUN apt-get update && apt-get install -y \
+   git \
+   unzip \
+   zip \
+   curl \
+   libicu-dev \
+   tzdata \
+   && docker-php-ext-install mysqli pdo pdo_mysql intl \
+   && apt-get clean \
+   && rm -rf /var/lib/apt/lists/*
 
-# Instala Composer
+# Timezone
+ENV TZ=America/Sao_Paulo
+
+# Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Cria diretório de trabalho
+# Diretório da aplicação
 WORKDIR /app
 
-# Copia arquivos do projeto para dentro do container
-COPY . .
-COPY wait-for-it.sh /wait-for-it.sh
-COPY entrypoint.sh /start.sh
-RUN chmod +x /start.sh /wait-for-it.sh
+# Código da aplicação
+COPY . /app
 
-# Permissão para writable
-RUN chown -R www-data:www-data /app/writable && chmod -R 775 /app/writable
-
-# Expõe a porta usada pelo spark
-EXPOSE 8080
-
-
-# Copia script de inicialização
+# Script de inicialização
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
-# Comando que inicia o MySQL e o servidor PHP
+# Permissões do CodeIgniter
+RUN chown -R www-data:www-data /app/writable \
+   && chmod -R 775 /app/writable
+
+# Porta do CodeIgniter (spark serve)
+EXPOSE 3000
+
 CMD ["/start.sh"]

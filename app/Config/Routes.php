@@ -1,10 +1,14 @@
 <?php
 
+use App\Controllers\AuthController;
 use CodeIgniter\Router\RouteCollection;
 
 /**
  * @var RouteCollection $routes
  */
+
+$routes->put('updateUser', 'AuthController::updateUser', ['as' => 'updateUserAction']);
+
 $routes->post('cadastrar', 'ActionsController::cadastrar', ['as' => 'cadastrar']);
 $routes->post('updatePlanta', 'ActionsController::updatePlanta');
 $routes->post('confirmadeletar', 'ActionsController::confirmaDeletar');

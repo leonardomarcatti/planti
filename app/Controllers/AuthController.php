@@ -45,7 +45,7 @@ class AuthController extends BaseController
       $rules = [
          'name' => [
             'rules' => 'required|min_length[3]',
-            'erros' => ['required' => 'O campo é obrigatório', 'nim_length' => 'O campo deve ter pelo menos 3 caracteres']
+            'errors' => ['required' => 'O campo é obrigatório', 'min_length' => 'O campo deve ter pelo menos 3 caracteres']
          ],
          'email' => [
             'rules' => 'required|max_length[254]|valid_email',
@@ -86,7 +86,6 @@ class AuthController extends BaseController
          'email'    => [
             'rules' => 'required|valid_email',
             'errors' => ['required' => 'O campo é obrigatório', 'valid_email' => 'Insira um email válido'],
-
          ],
          'password' => [
             'rules' => 'required|min_length[6]',
@@ -173,5 +172,50 @@ class AuthController extends BaseController
       }
 
       return redirect()->to(current_url())->with('errors', \session()->setTempdata('err', $this->validator->getErrors(), 10));
+   }
+
+   public function updateUser()
+   {
+      \helper('form');
+
+      $userId = session('id');
+
+      $post = $this->request->getPost(['name', 'email', 'password', 'password2']);
+
+      $rules = [
+         'name' => [
+            'rules' => 'required|min_length[3]',
+            'errors' => ['required' => 'O campo é obrigatório', 'min_length' => 'O campo deve ter pelo menos 3 caracteres']
+         ],
+         'email '=> [
+            'rules' => 'required|max_length[254]|valid_email',
+            'errors' => ['required' => 'O campo é obrigatório', 'valid_email' => 'O campo deve ser um email válido'],
+         ],
+         'password' => [
+            'rules' => 'required|min_length[6]',
+            'errors' => ['required' => 'O campo é obrigatório', 'min_length' => 'O campo deve ter pelo menos 6 caracteres']
+         ],
+         'password2' => [
+            'rules' => 'required|matches[password]',
+            'errors' => ['required' => 'O campo é obrigatório', 'matches' => 'As senhas não combinam']
+         ]
+      ];
+
+      $validData = $this->validateData($post, $rules);
+
+      if ($this->request->getMethod() == 'PUT' && $validData) {
+
+         $this->model = new UsersModel();
+
+         $result = $this->model->updateUser($this->encriptData($post['name']), $this->encriptData($post['password']), $this->encriptData($post['email']), $userId);
+
+         if ($result) {
+            return redirect()->to("editUser")->withInput()->with('success', 'Usuário atualizado com sucesso');
+         }
+
+         return \redirect()->route('editUser')->withInput()->with('bad_email', 'Email em uso');
+      }
+
+      return \redirect()->route('editUser')->withInput()->with('errors', \session()->setTempdata('err', $this->validator->getErrors(), 10));
    }
 }
