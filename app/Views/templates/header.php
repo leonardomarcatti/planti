@@ -1,7 +1,3 @@
-<?= $this->extend('layout/layout') ?>
-
-<?= $this->section('header') ?>
-
 <header>
    <?php
    if (session()->get('id')) { ?>
@@ -66,5 +62,3 @@
       <h1><?= $tab ?></h1>
    <?php } ?>
 </header>
-
-<?= $this->endSection() ?>

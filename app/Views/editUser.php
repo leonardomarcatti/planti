@@ -1,7 +1,7 @@
 <?= $this->extend('layout/layout') ?>
 
 <?= $this->section('content') ?>
-<?= $this->include('templates/header') ?>
+
 <main>
    <section>
       <div class="col-4 offset-4">
@@ -46,5 +46,5 @@
    </section>
 </main>
 
-<?= $this->include('templates/footer') ?>
+
 <?= $this->endSection('content') ?>

@@ -1,7 +1,7 @@
 <?= $this->extend('layout/layout') ?>
 
 <?= $this->section('content') ?>
-<?= $this->include('templates/header') ?>
+
 <?php
 
 use CodeIgniter\I18n\Time;
@@ -61,5 +61,5 @@ use CodeIgniter\I18n\Time;
    </aside>
 </main>
 
-<?= $this->include('templates/footer') ?>
+
 <?= $this->endSection('content') ?>

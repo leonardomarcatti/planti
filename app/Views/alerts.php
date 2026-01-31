@@ -1,7 +1,6 @@
 <?= $this->extend('layout/layout') ?>
 
 <?= $this->section('content') ?>
-<?= $this->include('templates/header') ?>
 <main class="container-fluid">
    <section class="my-4">
       <h2><?= esc($title) ?></h2>
@@ -25,5 +24,4 @@
       </div>
    </section>
 </main>
-<?= $this->include('templates/footer') ?>
 <?= $this->endSection('content') ?>

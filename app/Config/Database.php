@@ -26,10 +26,10 @@ class Database extends Config
     */
    public array $default = [
       'DSN'          => '',
-      'hostname'     => 'planti_db',
-      'username'     => 'admin',
-      'password'     => '9x*UwARA5@',
-      'database'     => 'planti',
+      'hostname'     => '',
+      'username'     => '',
+      'password'     => '',
+      'database'     => '',
       'DBDriver'     => 'MySQLi',
       'DBPrefix'     => '',
       'pConnect'     => false,

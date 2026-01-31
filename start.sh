@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+# set -e
 
 echo "⏳ Aguardando banco de dados (MySQL saudável pelo Docker)..."
 

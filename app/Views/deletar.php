@@ -1,7 +1,6 @@
 <?= $this->extend('layout/layout') ?>
 
 <?= $this->section('content') ?>
-<?= $this->include('templates/header') ?>
 <main id="del_planta">
    <section>
       <h2><?= $title ?></h2>
@@ -21,5 +20,4 @@
    </section>
 </main>
 
-<?= $this->include('templates/footer') ?>
 <?= $this->endSection('content') ?>

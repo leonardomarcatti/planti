@@ -1,7 +1,7 @@
 <?= $this->extend('layout/layout') ?>
 
 <?= $this->section('content') ?>
-<?= $this->include('templates/header') ?>
+
 <main id="success">
    <section>
       <h2>Sucesso</h2>
@@ -13,5 +13,5 @@
    </section>
 </main>
 
-<?= $this->include('templates/footer') ?>
+
 <?= $this->endSection('content') ?>

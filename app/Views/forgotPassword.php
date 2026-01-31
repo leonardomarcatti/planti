@@ -1,6 +1,6 @@
 <?= $this->extend('layout/layout') ?>
 <?= $this->section('content') ?>
-<?= $this->include('templates/header') ?>
+
 
 <main class="d-flex flex-column justify-content-center align-items-center">
    <section class="col-4">
@@ -26,5 +26,5 @@
    </section>
 </main>
 
-<?= $this->include('templates/footer') ?>
+
 <?= $this->endSection() ?>

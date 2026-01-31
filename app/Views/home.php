@@ -1,7 +1,6 @@
 <?= $this->extend('layout/layout') ?>
 
 <?= $this->section('content') ?>
-<?= $this->include('templates/header') ?>
 <main>
    <section>
       <h2>Consulte sua Planta</h2>
@@ -41,5 +40,4 @@
    <?php } ?>
 </main>
 
-<?= $this->include('templates/footer') ?>
 <?= $this->endSection('content') ?>
