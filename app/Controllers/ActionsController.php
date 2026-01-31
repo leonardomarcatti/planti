@@ -97,7 +97,15 @@ class ActionsController extends BaseController
 
          if ($checkedType) {
             $this->model = model(UsersTypesModel::class);
-            $this->model->insert(['id_user' => $sessionID, 'id_type' => $checkedType['id']]);
+            $userTypeChecked = $this->model->select()->where(['id_user' => $sessionID, 'id_type' => $checkedType])->get()->getRowArray();
+
+            if (!$userTypeChecked) {
+               $this->model->insert(['id_user' => $sessionID, 'id_type' => $checkedType['id']]);
+            }
+
+            if ($userTypeChecked) {
+               return \redirect()->route('tipo')->with('errors', \session()->setTempdata('err', ['type' => 'Tipo já existente'], 10));
+            }
          }
          $this->data['message'] = 'Cadastrado com sucesso';
          $this->data['url'] = 'tipos';
