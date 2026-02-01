@@ -7,7 +7,7 @@
       <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous" defer></script>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous" defer></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
-      <script src="https://kit.fontawesome.com/ec29234e56.js" crossorigin="anonymous" defer></script>
+      <script src="https://kit.fontawesome.com/e0884d5a91.js" crossorigin="anonymous" defer></script>
       <script src="<?= base_url('assets/js/script.js') ?>" defer></script>
       <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
       <title><?= esc($tab) ?></title>

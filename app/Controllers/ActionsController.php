@@ -11,7 +11,7 @@ use CodeIgniter\I18n\Time;
 class ActionsController extends BaseController
 {
    private object $model;
-   private ?array $data;
+   private array $data = [];
 
    private function checkView(string $file)
    {
@@ -107,6 +107,7 @@ class ActionsController extends BaseController
                return \redirect()->route('tipo')->with('errors', \session()->setTempdata('err', ['type' => 'Tipo já existente'], 10));
             }
          }
+
          $this->data['message'] = 'Cadastrado com sucesso';
          $this->data['url'] = 'tipos';
          $this->data['novo'] = 'Novo Cadastro';
@@ -132,6 +133,13 @@ class ActionsController extends BaseController
 
       if ($this->request->getMethod() == 'POST' && $this->validateData($post, $rules)) {
          $this->model->updatePlanta(intval($post['id']), $post['name']);
+
+         $this->data['message'] = 'Nome atualizado com sucesso';
+         $this->data['url'] = 'editar?id=' . $post['id'];
+         $this->data['novo'] = 'Reeditar Nome';
+         $this->data['tab'] = 'Sucesso';
+
+         return view('success', $this->data);
       };
 
       return \redirect()->back()->withInput()->with('errors', \session()->setTempdata('err', $this->validator->getErrors(), 10));
@@ -200,6 +208,7 @@ class ActionsController extends BaseController
 
       $post = $this->request->getPost(['type', 'action', 'title', 'start_date', 'deadline']);
       $valid_data = $this->validateData($post, ['type' => 'required', 'action' => 'required', 'title' => 'required', 'start_date' => 'required', 'deadline' => 'required']);
+
       if ($this->request->getMethod() == 'POST' && $valid_data) {
          $this->model = model(PlantasModel::class);
          $type = strval($this->request->getPost('type'));
@@ -217,8 +226,8 @@ class ActionsController extends BaseController
          $this->data['message'] = 'Cuidado cadastrado com sucesso';
          $this->data['url'] = 'cuidadosTipos';
          $this->data['novo'] = 'Novo Cuidado';
-         $this->data['title'] = 'Sucesso!';
-         return view('success');
+         $this->data['tab'] = 'Sucesso!';
+         return view('success', $this->data);
       };
 
       return \redirect()->back();

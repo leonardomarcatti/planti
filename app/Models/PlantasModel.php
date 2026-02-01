@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class PlantasModel extends Model
 {
    protected $table = 'plants';
-   protected $allowedFields = ['name', 'id_type', 'id_user'];
+   protected $allowedFields = ['name', 'id_type', 'id_user', 'created_at', 'updated_at'];
    protected $primaryKey = 'id';
 
    public function getUserPlantas(int $id): array
@@ -31,7 +31,7 @@ class PlantasModel extends Model
 
    public function addPlanta(string $name, int $type, int $id)
    {
-      return $this->insert(['name' => $name, 'id_type' => $type, 'id_user' => $id]);
+      return $this->insert(['name' => $name, 'id_type' => $type, 'id_user' => $id, 'created_at' => date('Y-m-d H:m:i'), 'updated_at' => date('Y-m-d H:m:i')]);
    }
 
    public function deletaPlanta(int $id)
@@ -41,7 +41,7 @@ class PlantasModel extends Model
 
    public function updatePlanta(int $id, string $name)
    {
-      $this->where('id', $id)->set(['name' => $name])->update();
+      $this->where('id', $id)->set(['name' => $name, 'updated_at' => date('Y-m-d H:m:i')])->update();
    }
 
    public function getTodasID(int $id)
