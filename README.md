@@ -9,14 +9,18 @@
    <li><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/composer/composer-original.svg" width="20" height="20" /> Composer</li>
    <li><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" width="20" height="20" /> Docker</li>
 </ul>
+
 <h2>Screen Shots</h2>
-
-Login</br>
-<img width="500" height="350" alt="login" src="https://github.com/user-attachments/assets/e18e8bc5-d3bc-43a4-8924-36e2dfa7b33a" />
-
-Home</br>
-<img width="500" height="350" alt="{3986BB23-DBBD-426B-83DE-E363457FE53D}" src="https://github.com/user-attachments/assets/f88c1ddd-1c59-4e51-be4a-3ff132b28d84" />
-
+<div>
+   <div align="left">
+      Login</br>
+      <img width="500" height="350" alt="login" src="https://github.com/user-attachments/assets/e18e8bc5-d3bc-43a4-8924-36e2dfa7b33a" />
+   </div>
+   <div align="right">
+      Home</br>
+      <img width="500" height="350" alt="{3986BB23-DBBD-426B-83DE-E363457FE53D}" src="https://github.com/user-attachments/assets/f88c1ddd-1c59-4e51-be4a-3ff132b28d84" />
+   </div>
+</div>
 Detalhe de Cuidados</br>
 <img width="500" height="350" alt="{00DE2870-31FD-415D-A276-50A2522E2573}" src="https://github.com/user-attachments/assets/2f79d7ce-e2f4-45fd-a8cb-f3220ce218c3" />
 
