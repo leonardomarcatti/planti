@@ -11,24 +11,31 @@
 </ul>
 
 <h2>Screen Shots</h2>
-<div>
-   <div align="left">
-      Login</br>
-      <img width="500" height="350" alt="login" src="https://github.com/user-attachments/assets/e18e8bc5-d3bc-43a4-8924-36e2dfa7b33a" />
-   </div>
-   <div align="right">
-      Home</br>
-      <img width="500" height="350" alt="{3986BB23-DBBD-426B-83DE-E363457FE53D}" src="https://github.com/user-attachments/assets/f88c1ddd-1c59-4e51-be4a-3ff132b28d84" />
-   </div>
+
+<div align="left">
+   Login</br>
+   <img width="500" height="350" alt="login" src="https://github.com/user-attachments/assets/e18e8bc5-d3bc-43a4-8924-36e2dfa7b33a" />
 </div>
-Detalhe de Cuidados</br>
-<img width="500" height="350" alt="{00DE2870-31FD-415D-A276-50A2522E2573}" src="https://github.com/user-attachments/assets/2f79d7ce-e2f4-45fd-a8cb-f3220ce218c3" />
 
-Cadastro de Plantas</br>
-<img width="500" height="350" alt="{AA61F3DF-206F-4682-B647-035E2CA3E1F1}" src="https://github.com/user-attachments/assets/866675e7-8de6-4941-a73a-6cc23a8b588e" />
+<div align="right">
+   Home</br>
+   <img width="500" height="350" alt="{3986BB23-DBBD-426B-83DE-E363457FE53D}" src="https://github.com/user-attachments/assets/f88c1ddd-1c59-4e51-be4a-3ff132b28d84" />
+</div>
 
-Edição de Cuidados e Menu
-<img width="500" height="350" alt="{D7684F11-48B1-43BA-8736-ADD0C0D33C17}" src="https://github.com/user-attachments/assets/bc555e41-7b1f-4663-941f-6f764f7d7f15" />
+<div align="left">
+   Detalhe de Cuidados</br>
+   <img width="500" height="350" alt="{00DE2870-31FD-415D-A276-50A2522E2573}" src="https://github.com/user-attachments/assets/2f79d7ce-e2f4-45fd-a8cb-f3220ce218c3" />
+</div>
+
+<div align="right">
+   Cadastro de Plantas</br>
+   <img width="500" height="350" alt="{AA61F3DF-206F-4682-B647-035E2CA3E1F1}" src="https://github.com/user-attachments/assets/866675e7-8de6-4941-a73a-6cc23a8b588e" />
+</div>
+
+<div align="left">
+   Edição de Cuidados e Menu</br>
+   <img width="500" height="350" alt="{D7684F11-48B1-43BA-8736-ADD0C0D33C17}" src="https://github.com/user-attachments/assets/bc555e41-7b1f-4663-941f-6f764f7d7f15" />
+</div>
 
 <h3>📦 Instalação</h3>
 <p>Siga os passos abaixo para rodar o projeto localmente.</p>
