@@ -10,7 +10,7 @@
    <li><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" width="20" height="20" /> Docker</li>
 </ul>
 
-<h2>Screen Shots</h2>
+<h2>Screenshots</h2>
 
 <div align="left">
    Login</br>
