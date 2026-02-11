@@ -10,6 +10,7 @@
    <li><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" width="20" height="20" /> Docker</li>
 </ul>
 
+
 <h3>📦 Instalação</h3>
 <p>Siga os passos abaixo para rodar o projeto localmente.</p>
 
@@ -26,7 +27,7 @@
 <p>Remova o comentário da linha de ambiente e o renomeie como production</p>
 <b>CI_ENVIRONMENT = production</b>
 
-<p>Em app/Config/App.php altere a linha para public string $baseURL = ''</p>
+<p>Em app/Config/App.php altere a linha para public string $baseURL = 'http://localhost:3000'</p>
 <p><b>O servidor estará acessível em: http://ip_server:3000</b></p>
 
 <p>Em app/Config/Database altere as configurações do banco de dados para:</p>
