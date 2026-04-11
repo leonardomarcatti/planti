@@ -2,32 +2,31 @@
 
 # set -e
 
-echo "⏳ Aguardando banco de dados (MySQL saudável pelo Docker)..."
+echo "🔍 Verificando se o banco está vazio..."
 
-# Garantia extra (opcional, mas seguro)
-until php -r "
+TABLE_COUNT=$(php -r "
 try {
-    new PDO(
+    \$pdo = new PDO(
         'mysql:host=planti_db;dbname=planti;port=3306',
         'admin',
         '9x*UwARA5@'
     );
-    echo 'DB OK';
+
+    \$stmt = \$pdo->query('SHOW TABLES');
+    \$tables = \$stmt->fetchAll();
+
+    echo count(\$tables);
 } catch (Exception \$e) {
-    exit(1);
+    echo '0';
 }
-"; do
-  echo "⏳ Banco ainda não disponível..."
-  sleep 3
-done
+")
 
-echo "✔ Banco disponível!"
-
-echo "📦 Instalando dependências..."
-composer install --no-interaction --prefer-dist --optimize-autoloader
-
-echo "🧱 Executando migrations..."
-php spark migrate --force
+if [ \"$TABLE_COUNT\" -eq 0 ]; then
+  echo "🧱 Banco vazio, executando migrations..."
+  php spark migrate --force
+else
+  echo "✔ Banco já possui tabelas ($TABLE_COUNT), pulando migrations."
+fi
 
 echo "🚀 Iniciando CodeIgniter 4..."
 php spark serve --host 0.0.0.0 --port 3000
